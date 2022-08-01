@@ -19,7 +19,13 @@ const updateReview = async (req, res) => {
   let updatedReview = await Review.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
+
   res.send(updatedReview);
+};
+
+const deleteReview = async (req, res) => {
+  let deletedRecord = await Review.findByIdAndDelete(req.params.id);
+  res.send(deletedRecord);
 };
 
 module.exports = {
@@ -27,4 +33,5 @@ module.exports = {
   createReview,
   getOneReview,
   updateReview,
+  deleteReview,
 };
